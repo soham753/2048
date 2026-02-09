@@ -1,0 +1,135 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Page */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #7fbfff, #5aa9e6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+#error{
+  color: red;
+  font-size: 15px;
+}
+#notes{
+  padding-top: 15px;
+  font-size: 15px;
+}
+#startGameBox {
+  background: #ffffff;
+  padding: 30px 35px;
+  border-radius: 14px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+#startGameBox label {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+#startGameBox input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+#startGameBox input:focus {
+  border-color: #5aa9e6;
+  box-shadow: 0 0 0 2px rgba(90, 169, 230, 0.25);
+}
+
+#startGameBox button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #5aa9e6;
+  color: white;
+  transition: 0.3s;
+}
+
+#startGameBox button:hover {
+  background: #4a94d6;
+  transform: translateY(-2px);
+}
+
+#scoreBoard {
+  display: none;
+
+  background: #ffffff;
+  padding: 10px 22px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  font-size: 20px;
+  font-weight: 600;
+  gap: 6px;
+}
+
+#scoreBoard h2 {
+  display: inline;
+}
+
+#scoreValue {
+  color: #5aa9e6;
+}
+
+#outerBox {
+  display: none;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  display: grid;
+  gap: 10px;
+}
+
+.innerBox {
+  background: #eaf4ff;
+  border-radius: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.innerBox:hover {
+  transform: scale(1.05);
+  background: #d6ecff;
+}
+
+.active {
+  background: #7fd7ff;
+}
+
+#hint {
+  display: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  opacity: 0.9;
+}
