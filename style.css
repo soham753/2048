@@ -1,4 +1,4 @@
-/* Reset */
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +6,7 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Page */
+
 body {
   min-height: 100vh;
   background: linear-gradient(135deg, #7fbfff, #5aa9e6);
@@ -123,10 +123,6 @@ body {
 .innerBox:hover {
   transform: scale(1.05);
   background: #d6ecff;
-}
-
-.active {
-  /* background: #7fd7ff; */
 }
 
 #hint {
