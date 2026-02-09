@@ -12,11 +12,19 @@ startbtn.addEventListener("click", () => {
   } else if (size < 4) {
     e.innerText = "Number must be greater than or equal to 4";
   } else {
-    size=parseFloat(size)
+    size = parseFloat(size);
     e.innerText = "";
     start();
   }
 });
+function removeValueClasses(box) {
+  box.classList.forEach((cls) => {
+    if (cls.startsWith("v")) {
+      box.classList.remove(cls);
+    }
+  });
+}
+
 function displayScore(a) {
   score = score + a * 2;
   console.log(score);
@@ -26,11 +34,18 @@ function convertToEmptyBox(i, innerBoxs) {
   innerBoxs[i].innerText = "";
   innerBoxs[i].classList.add("empty");
   innerBoxs[i].classList.remove("active");
+  removeValueClasses(innerBoxs[i]);
 }
 function convertToValueBox(i, j, innerBoxs) {
   innerBoxs[i].innerText = parseInt(innerBoxs[j].innerText);
   innerBoxs[i].classList.remove("empty");
   innerBoxs[i].classList.add("active");
+  applyColor(innerBoxs[i], parseInt(innerBoxs[j].innerText));
+  removeValueClasses(innerBoxs[j]);
+}
+
+function applyColor(box, value) {
+  box.classList.add(`v${value}`);
 }
 
 function start() {
@@ -62,7 +77,7 @@ function start() {
     emptyInnerBoxes[pos].classList.add("active");
     emptyInnerBoxes = [];
   }
-    function keyD(innerBoxs) {
+  function keyD(innerBoxs) {
     for (let i = 0; i < innerBoxs.length; i++) {
       for (let j = 0; j < innerBoxs.length; j++) {
         if (
@@ -82,6 +97,9 @@ function start() {
           let b = parseInt(innerBoxs[j + size].innerText);
           if (a == b) {
             innerBoxs[j + size].innerText = a + b;
+            applyColor(innerBoxs[j + size], a + b);
+            removeValueClasses(innerBoxs[j]);
+
             displayScore(a);
             convertToEmptyBox(j, innerBoxs);
           }
@@ -109,6 +127,8 @@ function start() {
           let b = parseInt(innerBoxs[j - size].innerText);
           if (a == b) {
             innerBoxs[j - size].innerText = a + b;
+            applyColor(innerBoxs[j - size], a + b);
+            removeValueClasses(innerBoxs[j]);
             displayScore(a);
             convertToEmptyBox(j, innerBoxs);
           }
@@ -138,6 +158,8 @@ function start() {
           let b = parseInt(innerBoxs[j + 1].innerText);
           if (a == b) {
             innerBoxs[j + 1].innerText = a + b;
+            applyColor(innerBoxs[j + 1], a + b);
+            removeValueClasses(innerBoxs[j]);
             displayScore(a);
             convertToEmptyBox(j, innerBoxs);
           }
@@ -167,6 +189,8 @@ function start() {
           let b = parseInt(innerBoxs[j - 1].innerText);
           if (a == b) {
             innerBoxs[j - 1].innerText = a + b;
+            applyColor(innerBoxs[j - 1], a + b);
+            removeValueClasses(innerBoxs[j]);
             displayScore(a);
             convertToEmptyBox(j, innerBoxs);
           }
