@@ -143,14 +143,87 @@ body {
 
 
 
-.v2    { background: #e0f2fe; color: #0f172a; } /* ice blue */
-.v4    { background: #bae6fd; color: #0f172a; } /* sky */
-.v8    { background: #86efac; color: #064e3b; } /* green */
-.v16   { background: #fde047; color: #713f12; } /* yellow */
-.v32   { background: #fbbf24; color: #78350f; } /* orange */
-.v64   { background: #fb7185; color: #881337; } /* pink */
-.v128  { background: #f472b6; color: #831843; } /* magenta */
-.v256  { background: #c084fc; color: #3b0764; } /* purple */
-.v512  { background: #818cf8; color: #1e1b4b; } /* indigo */
-.v1024 { background: #38bdf8; color: #082f49; } /* cyan */
-.v2048 { background: #22c55e; color: #052e16; } /* emerald */
+.v2 {
+  background: #e0f2fe;
+  color: #0f172a;
+}
+
+/* ice blue */
+.v4 {
+  background: #bae6fd;
+  color: #0f172a;
+}
+
+/* sky */
+.v8 {
+  background: #86efac;
+  color: #064e3b;
+}
+
+/* green */
+.v16 {
+  background: #fde047;
+  color: #713f12;
+}
+
+/* yellow */
+.v32 {
+  background: #fbbf24;
+  color: #78350f;
+}
+
+/* orange */
+.v64 {
+  background: #fb7185;
+  color: #881337;
+}
+
+/* pink */
+.v128 {
+  background: #f472b6;
+  color: #831843;
+}
+
+/* magenta */
+.v256 {
+  background: #c084fc;
+  color: #3b0764;
+}
+
+/* purple */
+.v512 {
+  background: #818cf8;
+  color: #1e1b4b;
+}
+
+/* indigo */
+.v1024 {
+  background: #38bdf8;
+  color: #082f49;
+}
+
+/* cyan */
+.v2048 {
+  background: #22c55e;
+  color: #052e16;
+}
+
+/* emerald */
+
+
+.highlight-once {
+  animation: mergeEffect 0.4s ease;
+}
+
+@keyframes mergeEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

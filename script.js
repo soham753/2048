@@ -68,133 +68,146 @@ function start() {
     let emptyInnerBoxes = [];
     for (let i of innerBoxs) {
       if (i.classList.contains("empty")) {
+        i.classList.remove("highlight-once");
         emptyInnerBoxes.push(i);
       }
     }
     let pos = Math.floor(Math.random() * emptyInnerBoxes.length);
-    emptyInnerBoxes[pos].innerText = 2;
-    emptyInnerBoxes[pos].classList.toggle("empty");
-    emptyInnerBoxes[pos].classList.add("active");
-    emptyInnerBoxes = [];
+    setTimeout(() => {
+      emptyInnerBoxes[pos].innerText = 2;
+      emptyInnerBoxes[pos].classList.toggle("empty");
+      emptyInnerBoxes[pos].classList.add("active");
+      emptyInnerBoxes[pos].classList.add("highlight-once");
+      emptyInnerBoxes = [];
+    }, 200);
   }
   function keyD(innerBoxs) {
     for (let i = 0; i < innerBoxs.length; i++) {
       for (let j = 0; j < innerBoxs.length; j++) {
-        if (
-          j + size < innerBoxs.length &&
-          innerBoxs[j].innerText !== "" &&
-          innerBoxs[j + size].classList.contains("empty")
-        ) {
-          convertToValueBox(j + size, j, innerBoxs);
-          convertToEmptyBox(j, innerBoxs);
-        }
-        if (
-          j + size < innerBoxs.length &&
-          innerBoxs[j].innerText != "" &&
-          !innerBoxs[j + size].classList.contains("empty")
-        ) {
-          let a = parseInt(innerBoxs[j].innerText);
-          let b = parseInt(innerBoxs[j + size].innerText);
-          if (a == b) {
-            innerBoxs[j + size].innerText = a + b;
-            applyColor(innerBoxs[j + size], a + b);
-            removeValueClasses(innerBoxs[j]);
-
-            displayScore(a);
+        setTimeout(function () {
+          if (
+            j + size < innerBoxs.length &&
+            innerBoxs[j].innerText !== "" &&
+            innerBoxs[j + size].classList.contains("empty")
+          ) {
+            convertToValueBox(j + size, j, innerBoxs);
             convertToEmptyBox(j, innerBoxs);
           }
-        }
+          if (
+            j + size < innerBoxs.length &&
+            innerBoxs[j].innerText != "" &&
+            !innerBoxs[j + size].classList.contains("empty")
+          ) {
+            let a = parseInt(innerBoxs[j].innerText);
+            let b = parseInt(innerBoxs[j + size].innerText);
+            if (a == b) {
+              innerBoxs[j + size].innerText = a + b;
+              applyColor(innerBoxs[j + size], a + b);
+              removeValueClasses(innerBoxs[j]);
+
+              displayScore(a);
+              convertToEmptyBox(j, innerBoxs);
+            }
+          }
+          console.log("Hello after 2 seconds!");
+        }, 150);
       }
     }
   }
   function keyU(innerBoxs) {
     for (let i = 0; i < innerBoxs.length; i++) {
       for (let j = 0; j < innerBoxs.length; j++) {
-        if (
-          j - size >= 0 &&
-          innerBoxs[j].innerText !== "" &&
-          innerBoxs[j - size].classList.contains("empty")
-        ) {
-          convertToValueBox(j - size, j, innerBoxs);
-          convertToEmptyBox(j, innerBoxs);
-        }
-        if (
-          j - size >= 0 &&
-          innerBoxs[j].innerText != "" &&
-          !innerBoxs[j - size].classList.contains("empty")
-        ) {
-          let a = parseInt(innerBoxs[j].innerText);
-          let b = parseInt(innerBoxs[j - size].innerText);
-          if (a == b) {
-            innerBoxs[j - size].innerText = a + b;
-            applyColor(innerBoxs[j - size], a + b);
-            removeValueClasses(innerBoxs[j]);
-            displayScore(a);
+        setTimeout(() => {
+          if (
+            j - size >= 0 &&
+            innerBoxs[j].innerText !== "" &&
+            innerBoxs[j - size].classList.contains("empty")
+          ) {
+            convertToValueBox(j - size, j, innerBoxs);
             convertToEmptyBox(j, innerBoxs);
           }
-        }
+          if (
+            j - size >= 0 &&
+            innerBoxs[j].innerText != "" &&
+            !innerBoxs[j - size].classList.contains("empty")
+          ) {
+            let a = parseInt(innerBoxs[j].innerText);
+            let b = parseInt(innerBoxs[j - size].innerText);
+            if (a == b) {
+              innerBoxs[j - size].innerText = a + b;
+              applyColor(innerBoxs[j - size], a + b);
+              removeValueClasses(innerBoxs[j]);
+              displayScore(a);
+              convertToEmptyBox(j, innerBoxs);
+            }
+          }
+        }, 150);
       }
     }
   }
   function keyR(innerBoxs) {
     for (let i = 0; i < innerBoxs.length; i++) {
       for (let j = 0; j < innerBoxs.length; j++) {
-        if (
-          j + 1 < innerBoxs.length &&
-          innerBoxs[j].innerText &&
-          innerBoxs[j + 1].classList.contains("empty") &&
-          Math.floor(j / size) == Math.floor((j + 1) / size)
-        ) {
-          convertToValueBox(j + 1, j, innerBoxs);
-          convertToEmptyBox(j, innerBoxs);
-        }
-        if (
-          j + 1 < innerBoxs.length &&
-          innerBoxs[j].innerText != "" &&
-          !innerBoxs[j + 1].classList.contains("empty") &&
-          Math.floor(j / size) == Math.floor((j + 1) / size)
-        ) {
-          let a = parseInt(innerBoxs[j].innerText);
-          let b = parseInt(innerBoxs[j + 1].innerText);
-          if (a == b) {
-            innerBoxs[j + 1].innerText = a + b;
-            applyColor(innerBoxs[j + 1], a + b);
-            removeValueClasses(innerBoxs[j]);
-            displayScore(a);
+        setTimeout(() => {
+          if (
+            j + 1 < innerBoxs.length &&
+            innerBoxs[j].innerText &&
+            innerBoxs[j + 1].classList.contains("empty") &&
+            Math.floor(j / size) == Math.floor((j + 1) / size)
+          ) {
+            convertToValueBox(j + 1, j, innerBoxs);
             convertToEmptyBox(j, innerBoxs);
           }
-        }
+          if (
+            j + 1 < innerBoxs.length &&
+            innerBoxs[j].innerText != "" &&
+            !innerBoxs[j + 1].classList.contains("empty") &&
+            Math.floor(j / size) == Math.floor((j + 1) / size)
+          ) {
+            let a = parseInt(innerBoxs[j].innerText);
+            let b = parseInt(innerBoxs[j + 1].innerText);
+            if (a == b) {
+              innerBoxs[j + 1].innerText = a + b;
+              applyColor(innerBoxs[j + 1], a + b);
+              removeValueClasses(innerBoxs[j]);
+              displayScore(a);
+              convertToEmptyBox(j, innerBoxs);
+            }
+          }
+        }, 150);
       }
     }
   }
   function keyL(innerBoxs) {
     for (let i = 0; i < innerBoxs.length; i++) {
       for (let j = 0; j < innerBoxs.length; j++) {
-        if (
-          j - 1 >= 0 &&
-          innerBoxs[j].innerText &&
-          innerBoxs[j - 1].classList.contains("empty") &&
-          Math.floor(j / size) == Math.floor((j - 1) / size)
-        ) {
-          convertToValueBox(j - 1, j, innerBoxs);
-          convertToEmptyBox(j, innerBoxs);
-        }
-        if (
-          j - 1 >= 0 &&
-          innerBoxs[j].innerText != "" &&
-          !innerBoxs[j - 1].classList.contains("empty") &&
-          Math.floor(j / size) == Math.floor((j - 1) / size)
-        ) {
-          let a = parseInt(innerBoxs[j].innerText);
-          let b = parseInt(innerBoxs[j - 1].innerText);
-          if (a == b) {
-            innerBoxs[j - 1].innerText = a + b;
-            applyColor(innerBoxs[j - 1], a + b);
-            removeValueClasses(innerBoxs[j]);
-            displayScore(a);
+        setTimeout(() => {
+          if (
+            j - 1 >= 0 &&
+            innerBoxs[j].innerText &&
+            innerBoxs[j - 1].classList.contains("empty") &&
+            Math.floor(j / size) == Math.floor((j - 1) / size)
+          ) {
+            convertToValueBox(j - 1, j, innerBoxs);
             convertToEmptyBox(j, innerBoxs);
           }
-        }
+          if (
+            j - 1 >= 0 &&
+            innerBoxs[j].innerText != "" &&
+            !innerBoxs[j - 1].classList.contains("empty") &&
+            Math.floor(j / size) == Math.floor((j - 1) / size)
+          ) {
+            let a = parseInt(innerBoxs[j].innerText);
+            let b = parseInt(innerBoxs[j - 1].innerText);
+            if (a == b) {
+              innerBoxs[j - 1].innerText = a + b;
+              applyColor(innerBoxs[j - 1], a + b);
+              removeValueClasses(innerBoxs[j]);
+              displayScore(a);
+              convertToEmptyBox(j, innerBoxs);
+            }
+          }
+        }, 150);
       }
     }
   }
